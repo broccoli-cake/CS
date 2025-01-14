@@ -295,7 +295,6 @@
   <details>
       <summary>C 코드: 멀티스레딩 구현 (pthread 라이브러리를 사용하여 두 개의 스레드 실행)</summary>
         
-        ```c
         #include <stdio.h>
         #include <pthread.h>
         
@@ -318,7 +317,6 @@
         
             return 0;
         }
-        ```
         
         - 출력 결과:
             - 스레드 실행 순서는 운영 체제의 스케줄링에 따라 결정되며, `Thread 1 is running.`과 `Thread 2 is running.`의 순서는 실행마다 달라질 수 있음
@@ -611,7 +609,6 @@
   <details>
       <summary>C 코드: 세마포어를 활용한 임계 구역 관리 (pthread와 sem_t 사용)</summary>
         
-        ```c
         #include <semaphore.h>
         #include <pthread.h>
         #include <stdio.h>
@@ -641,7 +638,6 @@
             return 0;
         }
         
-        ```
         
 
 **모니터**
@@ -674,7 +670,6 @@
   <details>
       <summary>Java 코드: synchronized 키워드를 사용한 모니터 기반 임계 구역 관리</summary>
       
-        ```java
         class MonitorExample {
           private int sharedResource = 0; // 공유 자원
         
@@ -707,7 +702,6 @@
             t2.start(); // 스레드 시작
           }
         }
-        ```   
 
 ### 뮤텍스(Mutex)와 조건 변수(Condition Variables)
 
@@ -736,7 +730,7 @@
   <details>
       <summary>C 코드: pthread_mutex를 사용한 임계 구역 관리</summary>
       
-      ```c
+pthread_mutex를 사용한 임계 구역 관리
         #include <pthread.h>
         #include <stdio.h>
         
@@ -761,10 +755,9 @@
                 pthread_join(threads[i], NULL); // 각 스레드가 종료될 때까지 대기
             }
         
-            pthread_mutex_destroy(&mutex); // 뮤텍스 자원 해제
+            pthrepthread_mutex를 사용한 임계 구역 관리ad_mutex_destroy(&mutex); // 뮤텍스 자원 해제
             return 0;
         }
-  ```
   
 
 **조건 변수**
@@ -792,7 +785,6 @@
   <details>
         <summary>C 코드: pthread_cond를 사용한 조건 변수 기반 동기화</summary>
       
-        ```c
         #include <pthread.h>
         #include <stdio.h>
         
@@ -836,8 +828,7 @@
         
             return 0;
         }
-        
-        ```
+
         
 
 ![2-9.png](OS/2-9.png)
@@ -1669,7 +1660,7 @@
   <details>
     <summary>Java 코드: FCFS(First-Come, First-Served) 디스크 스케줄링 구현</summary>
         
-        ```java
+
         public class FCFSExample {
           public static void main(String[] args) {
             int[] requests = {98, 183, 37, 122, 14, 124, 65, 67};
@@ -1681,7 +1672,7 @@
             }
           }
         }
-        ```
+
     </details>   
 
 **SSTF (Shortest Seek Time First)**
@@ -1704,7 +1695,6 @@
     <details>
         <summary>Java 코드: SSTF(Shortest Seek Time First) 디스크 스케줄링 구현</summary>
         
-        ```java
         import java.util.*;
         
         public class SSTF {
@@ -1728,7 +1718,6 @@
           }
         }
         
-        ```
   </details>
 
 **SCAN**
@@ -1751,7 +1740,6 @@
   <details>
       <summary>Java 코드: SCAN 디스크 스케줄링 구현 (전방향 및 역방향 탐색)</summary>
         
-        ```java
         import java.util.*;
         
         public class SCAN {
@@ -1797,7 +1785,6 @@
           }
         }
         
-        ```
         
 
 **C-SCAN (Circular SCAN)**
@@ -1820,7 +1807,6 @@
   <details>
       <summary>Java 코드: CSCAN(Circular SCAN) 디스크 스케줄링 구현</summary>
         
-        ```java
         import java.util.*;
         
         public class CSCAN {
@@ -1848,7 +1834,6 @@
           }
         }
         
-        ```
         
 
 **비교표**
@@ -1986,7 +1971,6 @@
   <details>
       <summary>C 코드: 저수준 I/O 구현</summary>
         
-        ```c
         // in C
         
         #include <stdio.h>
@@ -2016,12 +2000,10 @@
         시스템 호출: open, read, write, close는 커널과 직접 상호작용하여 I/O를 수행하는 하드웨어-소프트웨어 인터페이스의 예임
         */
         
-        ```
         
   <details>
       <summary>Python 코드: 고수준 I/O 구현</summary>
         
-        ```python
         # in Python
         
         with open("example.txt", "r") as file:
@@ -2033,7 +2015,6 @@
         # print 함수: 읽어온 데이터를 표준 출력에 출력함
         # 고수준 API: Python의 open 함수는 내부적으로 시스템 호출을 사용하여 파일을 처리하며, 간단하고 추상화된 방법으로 파일 I/O를 수행함
         
-        ```
         
 
 ---
@@ -2058,7 +2039,6 @@
   <details>
       <summary>C 코드: 장치 드라이버 구현</summary>
         
-        ```c
         // in C
         
         #include <linux/module.h>
@@ -2087,12 +2067,10 @@
         특징: 커널과 하드웨어 간 직접 통신
         */
         
-        ```
         
     <details>
         <summary>Python 코드: 장치 드라이버 구현</summary>
         
-        ```python
         # in Python
         import os
         
@@ -2110,7 +2088,6 @@
         # modprobe/rmmod 호출: 드라이버 로드/언로드
         # 특징: 기존 커널 모듈 관리, 간단한 구현
         
-        ```
         
 
 ---
@@ -2147,7 +2124,6 @@
   <details>
       <summary>C 코드: 인터럽트 처리 구현</summary>
         
-        ```c
         // in C
         
         #include <stdio.h>
@@ -2172,12 +2148,10 @@
         특징: 인터럽트 기반 처리로 CPU 대기 시간 최소화
         */
         
-        ```
         
   <details>
       <summary>Python 코드: 인터럽트 처리 구현</summary>
         
-        ```python
         # in Python
         
         import signal
@@ -2194,7 +2168,6 @@
         # signal.signal: SIGINT를 처리할 핸들러 등록
         # 특징: 인터럽트 발생 시 지정된 함수 실행
         
-        ```
         
 
 ---
@@ -2232,7 +2205,6 @@
   <details>
       <summary>C 코드: DMA 구현</summary>
         
-        ```c
         // in C
         
         #include <stdio.h>
@@ -2273,12 +2245,10 @@
         3. CPU는 DMA가 전송 작업을 수행하는 동안 다른 작업을 수행
         */
         
-        ```
         
   <details>
       <summary>Python 코드: DMA 구현</summary>
         
-        ```python
         # in Python
         
         import threading
@@ -2309,8 +2279,7 @@
         # 1.DMA Transfer Started...가 출력됨
         # 2.데이터가 순차적으로 전송되며, 동시에 CPU는 "Doing other work..." 메시지를 출력
         # 3.모든 데이터가 전송 완료되면 DMA 종료 메시지가 출력됨
-        
-        ```
+
         
 
 ---
