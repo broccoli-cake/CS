@@ -59,7 +59,7 @@
 ![1-1.png](OS/1-1.png)
 
 > 위 그림은 운영체제의 계층 구조를 나타내며, 하드웨어에서 사용자와 시스템 프로그램까지의 상호작용 과정을 보여줌
-> 
+
 
 ### 커널(Kernel)
 
@@ -68,7 +68,7 @@
     - 프로세스 관리, 메모리 관리, 파일 시스템, 입출력 관리 등 운영체제의 핵심 기능을 수행하는 부분
 - **특징**:
     - 커널은 운영체제의 가장 중요한 부분으로, 시스템의 안정성과 성능을 좌우함
-    - **시스템 호출(System Call)**과 **드라이버**를 통해 하드웨어 및 소프트웨어와 상호작용
+    - 시스템 호출(System Call)과 드라이버를 통해 하드웨어 및 소프트웨어와 상호작용
     - 단일형, 계층형, 마이크로커널 등 다양한 아키텍처로 구현 가능
     - **계층적 역할**:
         - 커널은 **하드웨어와 사용자 프로그램 사이의 중재 계층**으로 작동하며, 하드웨어 제어와 사용자 요청을 연결함
@@ -96,8 +96,8 @@
 
 ![1-2.png](OS/1-2.png)
 
-> 위 그림은 사용자 모드(User Mode)와 커널 모드(Kernel Mode) ****간의 관계를 보여주며, 시스템 호출(System Call)을 통해 응용 프로그램이 시스템 자원(Resource)에 접근하는 과정을 나타냄
-> 
+> 위 그림은 사용자 모드(User Mode)와 커널 모드(Kernel Mode)간의 관계를 보여주며, 시스템 호출(System Call)을 통해 응용 프로그램이 시스템 자원(Resource)에 접근하는 과정을 나타냄
+>  
 - **정의**:
     - **사용자 모드**: 응용 프로그램이 실행되는 제한된 환경으로, 시스템 자원에 직접 접근하지 못함
     - **커널 모드**: 커널에서 실행되는 특권 모드로, 모든 시스템 자원(CPU, 메모리, 입출력 장치)에 접근 가능
@@ -212,7 +212,7 @@
 - **특징:**
     - 프로세스는 서로 독립적이며, 각 프로세스는 고유한 메모리 공간을 가짐
     - 운영체제는 프로세스의 자원 할당과 관리를 담당
-    - 운영체제는 **PCB (Process Control Block)**를 통해 각 프로세스의 상태와 자원을 관리하며, 프로세스 전환 시 PCB를 참조하여 실행 상태를 저장하고 복구함
+    - 운영체제는 PCB (Process Control Block)를 통해 각 프로세스의 상태와 자원을 관리하며, 프로세스 전환 시 PCB를 참조하여 실행 상태를 저장하고 복구함
     - 프로세스는 생성, 준비, 실행, 대기, 종료의 **상태**를 가짐
         - **생성 (New)**
             - **정의**: 프로세스가 생성되었지만 아직 실행되지 않은 상태
@@ -292,7 +292,8 @@
     - **동기화 문제 발생 가능**: 여러 스레드가 동일한 메모리 공간을 사용하므로 데이터의 불일치 문제가 발생할 수 있음
     - **오류 전파 가능성**: 하나의 스레드에서 오류 발생 시 전체 프로세스에 영향을 줄 수 있음
 - **예시:**
-    - C 코드: 멀티스레딩 구현 (pthread 라이브러리를 사용하여 두 개의 스레드 실행)
+  <details>
+      <summary>C 코드: 멀티스레딩 구현 (pthread 라이브러리를 사용하여 두 개의 스레드 실행)</summary>
         
         ```c
         #include <stdio.h>
@@ -319,7 +320,7 @@
         }
         ```
         
-        - 출력 결과**:**
+        - 출력 결과:
             - 스레드 실행 순서는 운영 체제의 스케줄링에 따라 결정되며, `Thread 1 is running.`과 `Thread 2 is running.`의 순서는 실행마다 달라질 수 있음
 
 ---
@@ -607,7 +608,8 @@
     - 생산자-소비자 문제, 독자-작가 문제, 제한된 자원 접근 관리
     - 제한된 연결 개수(예: 데이터베이스 커넥션 풀)와 같은 자원 제어에 유용
 - **예시:**
-    - C 코드: 세마포어를 활용한 임계 구역 관리 (pthread와 sem_t 사용)
+  <details>
+      <summary>C 코드: 세마포어를 활용한 임계 구역 관리 (pthread와 sem_t 사용)</summary>
         
         ```c
         #include <semaphore.h>
@@ -669,8 +671,9 @@
     - 자바에서 스레드 동기화(`synchronized`)와 조건 관리에 사용
     - 생산자-소비자 패턴, 작업 대기열 관리, 실시간 데이터 처리
 - **예시:**
-    - Java 코드: synchronized 키워드를 사용한 모니터 기반 임계 구역 관리
-        
+  <details>
+      <summary>Java 코드: synchronized 키워드를 사용한 모니터 기반 임계 구역 관리</summary>
+      
         ```java
         class MonitorExample {
           private int sharedResource = 0; // 공유 자원
@@ -704,8 +707,7 @@
             t2.start(); // 스레드 시작
           }
         }
-        ```
-        
+        ```   
 
 ### 뮤텍스(Mutex)와 조건 변수(Condition Variables)
 
@@ -731,9 +733,10 @@
     - 다중 스레드 환경에서 자원에 대한 동시 접근을 제어할 필요가 있는 모든 경우
     - 주로 공유 변수, 파일, 네트워크 리소스 보호에 사용됨
 - **예시:**
-    - C 코드: pthread_mutex를 사용한 임계 구역 관리
-        
-        ```c
+  <details>
+      <summary>C 코드: pthread_mutex를 사용한 임계 구역 관리</summary>
+      
+      ```c
         #include <pthread.h>
         #include <stdio.h>
         
@@ -761,9 +764,8 @@
             pthread_mutex_destroy(&mutex); // 뮤텍스 자원 해제
             return 0;
         }
-        
-        ```
-        
+  ```
+  
 
 **조건 변수**
 
@@ -787,8 +789,9 @@
     - 데이터 준비 상태에 따라 스레드의 작업 순서를 조정해야 하는 경우
     - 생산자-소비자(Producer-Consumer) 문제 등에서 사용
 - **예시:**
-    - C 코드: pthread_cond를 사용한 조건 변수 기반 동기화
-        
+  <details>
+        <summary>C 코드: pthread_cond를 사용한 조건 변수 기반 동기화</summary>
+      
         ```c
         #include <pthread.h>
         #include <stdio.h>
@@ -1663,7 +1666,8 @@
 - **단점**:
     - 탐색 시간이 비효율적이며 성능 예측이 어려움
 - **예시:**
-    - Java 코드: FCFS(First-Come, First-Served) 디스크 스케줄링 구현
+  <details>
+    <summary>Java 코드: FCFS(First-Come, First-Served) 디스크 스케줄링 구현</summary>
         
         ```java
         public class FCFSExample {
@@ -1678,7 +1682,7 @@
           }
         }
         ```
-        
+    </details>   
 
 **SSTF (Shortest Seek Time First)**
 
@@ -1697,7 +1701,8 @@
 - **활용**:
     - 자원이 제한적이고 탐색 시간 최소화가 중요한 시스템
 - **예시:**
-    - Java 코드: SSTF(Shortest Seek Time First) 디스크 스케줄링 구현
+    <details>
+        <summary>Java 코드: SSTF(Shortest Seek Time First) 디스크 스케줄링 구현</summary>
         
         ```java
         import java.util.*;
@@ -1724,7 +1729,7 @@
         }
         
         ```
-        
+  </details>
 
 **SCAN**
 
@@ -1743,7 +1748,8 @@
 - **활용**:
     - 대규모 데이터 처리 시스템, 다중 요청 처리 환경
 - **예시:**
-    - Java 코드: SCAN 디스크 스케줄링 구현 (전방향 및 역방향 탐색)
+  <details>
+      <summary>Java 코드: SCAN 디스크 스케줄링 구현 (전방향 및 역방향 탐색)</summary>
         
         ```java
         import java.util.*;
@@ -1811,7 +1817,8 @@
 - **활용**:
     - 실시간 시스템, 지속적인 디스크 접근이 요구되는 환경
 - **예시:**
-    - Java 코드: CSCAN(Circular SCAN) 디스크 스케줄링 구현
+  <details>
+      <summary>Java 코드: CSCAN(Circular SCAN) 디스크 스케줄링 구현</summary>
         
         ```java
         import java.util.*;
@@ -1976,7 +1983,8 @@
     - 네트워크 데이터 전송
     - 사용자 인터페이스 장치 제어
 - **예시:**
-    - C 코드: 저수준 I/O 구현
+  <details>
+      <summary>C 코드: 저수준 I/O 구현</summary>
         
         ```c
         // in C
@@ -2010,7 +2018,8 @@
         
         ```
         
-    - Python 코드: 고수준 I/O 구현
+  <details>
+      <summary>Python 코드: 고수준 I/O 구현</summary>
         
         ```python
         # in Python
@@ -2046,7 +2055,8 @@
     - 네트워크 카드 활성화
     - 디스크 드라이브 제어
 - **예시:**
-    - C 코드: 장치 드라이버 구현
+  <details>
+      <summary>C 코드: 장치 드라이버 구현</summary>
         
         ```c
         // in C
@@ -2079,7 +2089,8 @@
         
         ```
         
-    - Python 코드: 장치 드라이버 구현
+    <details>
+        <summary>Python 코드: 장치 드라이버 구현</summary>
         
         ```python
         # in Python
@@ -2116,7 +2127,7 @@
     - 인터럽트: 특정 이벤트 발생 시 하드웨어가 인터럽트를 생성하고, CPU는 해당 인터럽트를 처리함
         1. I/O Command로 I/O Controller에 명령을 내림
         2. 2.5에서 I/O에 명령을 내리고 자신의 다른 일을 실행함
-        3. 2/5에서 I/O 작업이 진행중에 CPU에서는 다른 일을 수행하고 있을 수 있다.
+        3. 2/5에서 I/O 작업이 진행중에 CPU에서는 다른 일을 수행하고 있을 수 있음
         4. I/O 실행이 끝나면 CPU에게 Interrupt Request를 하게 되고 CPU는 하던 일을 멈추고 I/O에서 전달된 데이터를 처리함
     
     ![I:O1.png](OS/IO1.png)
@@ -2133,7 +2144,8 @@
     - 인터럽트: 네트워크 데이터 패킷 처리, 키보드 입력 처리
     - 폴링: 간단한 센서 데이터 읽기
 - **예시:**
-    - C 코드: 인터럽트 처리 구현
+  <details>
+      <summary>C 코드: 인터럽트 처리 구현</summary>
         
         ```c
         // in C
@@ -2162,7 +2174,8 @@
         
         ```
         
-    - Python 코드: 인터럽트 처리 구현
+  <details>
+      <summary>Python 코드: 인터럽트 처리 구현</summary>
         
         ```python
         # in Python
@@ -2216,7 +2229,8 @@
     - 멀티미디어 장치 데이터 처리
     - 고속 네트워크 패킷 처리
 - **예시:**
-    - C 코드: DMA 구현
+  <details>
+      <summary>C 코드: DMA 구현</summary>
         
         ```c
         // in C
@@ -2261,7 +2275,8 @@
         
         ```
         
-    - Python 코드: DMA 구현
+  <details>
+      <summary>Python 코드: DMA 구현</summary>
         
         ```python
         # in Python
